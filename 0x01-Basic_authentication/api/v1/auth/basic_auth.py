@@ -19,7 +19,6 @@ class BasicAuth(Auth):
             return None
         if not authorization_header.startswith("Basic "):
             return None
-        print(authorization_header.split(' ')[1])
         return authorization_header.split(' ')[1]
 
     def decode_base64_authorization_header(self,

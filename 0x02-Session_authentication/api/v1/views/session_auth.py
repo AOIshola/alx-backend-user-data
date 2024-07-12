@@ -3,10 +3,13 @@
 """
 
 from api.v1.views import app_views
-from api.v1.app import auth
+from api.v1.auth.session_auth import SessionAuth
 from flask import jsonify, request, abort
 from models.user import User
 import os
+
+
+auth = SessionAuth()
 
 
 @app_views.route('/auth_session/login', methods=['POST'],

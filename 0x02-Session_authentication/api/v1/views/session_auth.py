@@ -10,7 +10,7 @@ import os
 
 
 @app_views.route('/auth_session/login', methods=['POST'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def login():
     """ Handle user login
     """
@@ -40,7 +40,7 @@ def login():
 
 
 @app_views.route('/auth_session/logout', methods=['DELETE'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def logout():
     """ Handle user logout
     """

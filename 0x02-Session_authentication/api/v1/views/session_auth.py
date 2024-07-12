@@ -4,15 +4,12 @@
 
 from api.v1.views import app_views
 from api.v1.app import auth
-from flask import Blueprint, jsonify, request, abort
+from flask import jsonify, request, abort
 from models.user import User
 import os
 
 
-session_auth = Blueprint('session_auth', __name__)
-
-
-@session_auth.route('/auth_session/login', methods=['POST'],
+@app_views.route('/auth_session/login', methods=['POST'],
                     strict_slashes=False)
 def login():
     """ Handle user login
@@ -42,7 +39,7 @@ def login():
     return response
 
 
-@session_auth.route('/auth_session/logout', methods=['DELETE'],
+@app_views.route('/auth_session/logout', methods=['DELETE'],
                     strict_slashes=False)
 def logout():
     """ Handle user logout

@@ -11,14 +11,14 @@ AUTH = Auth()
 
 
 @app.route('/', methods=['GET', ])
-def index() -> str:
+def index():
     """ simple index GET route
     """
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users() -> str:
+def users():
     """ register users
     """
     email = request.form.get('email')
@@ -84,6 +84,8 @@ def get_reset_password_token():
 
 @app.route("/reset_password", methods=["PUT"])
 def update_password():
+    """ Update password
+    """
     email = request.form.get("email")
     reset_token = request.form.get("reset_token")
     new_password = request.form.get("new_password")

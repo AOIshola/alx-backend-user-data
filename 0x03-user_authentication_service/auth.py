@@ -31,12 +31,10 @@ class Auth:
         """ register user and save to database
         """
         try:
-            # Check if user already exists
             existing_user = self._db.find_user_by(email=email)
             if existing_user:
                 raise ValueError(f"User {email} already exists")
         except NoResultFound:
-            # User does not exist, proceed with registration
             hashed_password = _hash_password(password)
             new_user = self._db.add_user(email, hashed_password)
             return new_user

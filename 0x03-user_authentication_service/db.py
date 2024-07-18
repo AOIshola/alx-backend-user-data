@@ -40,7 +40,7 @@ class DB:
         self._session.commit()
         return user
 
-    def find_user_by(self, **kwargs) -> User:
+    def find_user_by(self, **kwargs: dict) -> User:
         """ find user by attributes in kwargs
         """
         try:
@@ -51,7 +51,7 @@ class DB:
             raise InvalidRequestError()
         return user
 
-    def update_user(self, user_id: int, **kwargs) -> None:
+    def update_user(self, user_id: int, **kwargs: dict) -> None:
         """ updates the details of a user
         """
         user = self.find_user_by(id=user_id)

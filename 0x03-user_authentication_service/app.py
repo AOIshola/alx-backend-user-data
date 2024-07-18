@@ -64,10 +64,11 @@ def profile():
     """ user profile
     """
     session_id = request.cookies.get('session_id')
-    user = AUTH._db.find_user_by(session_id=session_id)
-    if not user:
+    try:
+        user = AUTH._db.find_user_by(session_id=session_id)
+        return jsonify({"email": user.email}), 200
+    except Exception:
         abort(403)
-    return jsonify({"email": user.email}), 200
 
 
 @app.route('/reset_password', methods=['POST', 'PUT'], strict_slashes=False)

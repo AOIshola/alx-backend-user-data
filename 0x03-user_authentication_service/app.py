@@ -47,12 +47,12 @@ def login():
     return response
 
 
-@app.route('/logout', methods=['DELETE'], strict_slashes=False)
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
     """ logs a user out and destroys the session
     """
+    session_id = request.cookies.get('session_id')
     try:
-        session_id = request.cookies.get('session_id')
         user = AUTH._db.find_user_by(session_id=session_id)
         AUTH.destroy_session(user.id)
         return redirect('/')

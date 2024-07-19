@@ -66,8 +66,10 @@ def logout():
 def profile():
     """ user profile
     """
-    session_id = request.cookies.get('session_id')
     try:
+        session_id = request.cookies.get('session_id')
+        if not session_id:
+            abort(403)
         user = AUTH._db.find_user_by(session_id=session_id)
         return jsonify({"email": user.email}), 200
     except Exception:

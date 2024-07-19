@@ -54,11 +54,22 @@ class DB:
     def update_user(self, user_id: int, **kwargs: dict) -> None:
         """ updates the details of a user
         """
-        user = self.find_user_by(id=user_id)
-        if not user:
-            raise NoResultFound()
+        try:
+            user = self.find_user_by(id=user_id)
         for k, v in kwargs.items():
             if not hasattr(user, k):
-                raise ValueError()
+                raise ValueError(f"Attribute {k} does not exist on User")
             setattr(user, k, v)
+        self._session.commit()
+        except NoResultFound:
+            raise NoResultFound(f"User with id {user_id} not found")
+        except ValueError as e:
+            raise ValueError(e)
+        #user = self.find_user_by(id=user_id)
+        #if not user:
+         #   raise NoResultFound()
+        #for k, v in kwargs.items():
+         #   if not hasattr(user, k):
+          #      raise ValueError()
+           # setattr(user, k, v)
         self.__session.commit()

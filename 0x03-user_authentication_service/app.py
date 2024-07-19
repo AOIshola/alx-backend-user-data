@@ -51,10 +51,10 @@ def login():
 def logout():
     """ logs a user out and destroys the session
     """
-    session_id = request.cookies.get('session_id')
-    if not session_id:
-        abort(403)
     try:
+        session_id = request.cookies.get('session_id')
+        if not session_id:
+            abort(403)
         user = AUTH._db.find_user_by(session_id=session_id)
         AUTH.destroy_session(user.id)
         return redirect('/')

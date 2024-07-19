@@ -53,7 +53,7 @@ class Auth:
     def _generate_uuid(self):
         """ Generate UUID
         """
-        return uuid.uuid4()
+        return str(uuid.uuid4())
 
     def create_session(self, email: str) -> str:
         """ creates a session for a user
@@ -97,7 +97,7 @@ class Auth:
         except ValueError:
             raise ValueError()
 
-    def update_password(self, reset_token: str, password: str) -> None:
+    def update_password(self, reset_token: str, password: str):
         """ updates my password babyyyyyy
         """
         try:

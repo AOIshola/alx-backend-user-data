@@ -1,4 +1,4 @@
-#!/usr/bin/env pythin3
+#!/usr/bin/env python3
 """ Test module for all routes """
 import requests
 

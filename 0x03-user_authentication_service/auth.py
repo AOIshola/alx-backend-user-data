@@ -53,7 +53,7 @@ class Auth:
     def _generate_uuid(self):
         """ Generate UUID
         """
-        return str(uuid.uuid4())
+        return uuid.uuid4()
 
     def create_session(self, email: str) -> str:
         """ creates a session for a user

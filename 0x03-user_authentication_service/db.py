@@ -72,4 +72,4 @@ class DB:
          #   if not hasattr(user, k):
           #      raise ValueError()
            # setattr(user, k, v)
-        self.__session.commit()
+#        self.__session.commit()

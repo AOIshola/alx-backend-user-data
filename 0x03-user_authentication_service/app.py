@@ -54,7 +54,6 @@ def logout():
     session_id = request.cookies.get('session_id')
     try:
         user = AUTH._db.find_user_by(session_id=session_id)
-        if not user:
         AUTH.destroy_session(user.id)
         return redirect('/')
     except Exception:

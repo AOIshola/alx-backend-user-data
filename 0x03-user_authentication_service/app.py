@@ -100,7 +100,7 @@ def update_password():
             abort(403)
         AUTH.update_password(reset_token, new_password)
         user = AUTH._db.find_user_by(email=email)
-        return jsonify({"email": user.email,
+        return jsonify({"email": email,
                         "message": "Password updated"}), 200
     except ValueError:
         abort(403)
